@@ -70,7 +70,10 @@ todo 重述(130) 之后。交接摘要和 todo 一样回答「我刚才做到哪
 
 ```bash
 cd ~/.dsh/profiles/desktop
-pnpm add link:~/Documents/dsh-workspace/link-plugins/dsh-handoff-state
+pnpm add link:/absolute/path/to/dsh-workspace/link-plugins/dsh-handoff-state
+
+   # Windows 上 `~` 不会展开，直接给绝对路径，例如：
+   #   pnpm add link:C:/Users/you/Documents/dsh-workspace/link-plugins/dsh-handoff-state
 ```
 
 然后在 profile 的 `dsh.profile.bundles` 里加 `dsh-handoff-state`。bundle 自带的
