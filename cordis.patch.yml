@@ -1,0 +1,15 @@
+# Bundle layer: DSH loads this file automatically when dsh-handoff-state is
+# enabled. Do NOT copy its insert block into the profile's cordis.patch.yml:
+# doing so duplicates entry IDs and prevents Settings from saving.
+# Keep profile overrides as top-level `- id: handoff-state` rows instead.
+#
+# The row name resolves from the profile's own node_modules, where
+# `pnpm add link:<workspace>/dsh-handoff-state` installed this package.
+- insert:
+    - id: handoff-state
+      name: 'dsh-handoff-state'
+      config:
+        # Master switch; a disabled row registers nothing at all.
+        enabled: true
+        # Scene-memory root. Omitted means ~/.dsh/场景记忆.
+        # scenesRoot: 'C:/Users/28158/.dsh/场景记忆'

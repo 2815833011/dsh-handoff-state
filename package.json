@@ -1,0 +1,31 @@
+{
+  "name": "dsh-handoff-state",
+  "version": "0.1.0",
+  "description": "Injects the current scene's §〇 handoff into DSH runtime context every turn, so a session starts from the recorded state instead of from zero.",
+  "type": "module",
+  "license": "MIT",
+  "keywords": [
+    "dsh",
+    "dsh-plugin",
+    "handoff",
+    "context",
+    "session"
+  ],
+  "exports": {
+    ".": "./index.js",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "index.js",
+    "state.js",
+    "cordis.patch.yml"
+  ],
+  "scripts": {
+    "test": "node test-state.mjs && node test-host.mjs"
+  },
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    }
+  }
+}
