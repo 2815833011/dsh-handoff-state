@@ -259,12 +259,14 @@ export function renderHandoffState({ scene, parsed, bucket, docPath = null, memo
 
   for (const item of wanted) {
     const budget = typeof item.budget === 'number' ? item.budget : 0;
-    if (budget < 40) {
-      truncated = true;
-      continue;
-    }
+    // 字段本身装得下就整段放行：40 B 是「值得截断渲染」的下限，
+    // 不能拿它去卡短字段（否则 `目标: x` 这种 10 B 的字段会被整条丢掉）。
     if (item.need <= budget) {
       lines.push(item.prefix + item.body);
+      continue;
+    }
+    if (budget < 40) {
+      truncated = true;
       continue;
     }
     const room = Math.max(16, budget - bytesOf(item.prefix) - 3);

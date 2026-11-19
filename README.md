@@ -167,3 +167,8 @@ node test-host.mjs    # 宿主侧注册、缓存键、异常降级，10 个用�
 ## License
 
 MIT
+
+## 兼容性 / Compatibility
+
+- dsh **0.2.2-rc.5**：宿主升级后重跑 `npm test`（`test-state.mjs` 18 例 + `test-host.mjs` 10 例）全绿。
+  本轮修复了 water-filling 的丢弃顺序 bug：原实现先判 `budget < 40` 再判整段放行，导致 10 字节级的短字段（例如 `目标: g`）被整条丢掉，`§〇` 渲染成空串。
